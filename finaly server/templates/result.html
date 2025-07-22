@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Natijalar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Mahsulotlar Natijasi</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mahsulot nomi</th>
+                    <th>Yetkazib berish narxi (UZS)</th>
+                    <th>Internetdagi narxi (UZS)</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in results %}
+                <tr class="{{ 'good' if item.status == 'Ajoyib' else 'bad' }}">
+                    <td>{{ item.mahsulot }}</td>
+                    <td>{{ item.yetkazib_berish_narxi }}</td>
+                    <td>{{ item.internet_narxi }}</td>
+                    <td>{{ item.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/">Ortga qaytish</a>
+    </div>
+</body>
+</html>
